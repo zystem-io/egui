@@ -131,7 +131,7 @@ impl WebRunner {
 
     /// Returns `None` if there has been a panic, or if we have been destroyed.
     /// In that case, just return to JS.
-    pub(crate) fn try_lock(&self) -> Option<std::cell::RefMut<'_, AppRunner>> {
+    pub fn try_lock(&self) -> Option<std::cell::RefMut<'_, AppRunner>> {
         if self.panic_handler.has_panicked() {
             // Unsubscribe from all events so that we don't get any more callbacks
             // that will try to access the poisoned runner.
