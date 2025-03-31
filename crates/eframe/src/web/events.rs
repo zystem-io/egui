@@ -315,8 +315,8 @@ fn install_copy_cut_paste(runner_ref: &WebRunner, target: &EventTarget) -> Resul
             if let Ok(text) = data.get_data("text") {
                 let text = text.replace("\r\n", "\n");
 
-                let mut should_stop_propagation = true;
-                let mut should_prevent_default = true;
+                let mut should_stop_propagation = false;
+                let mut should_prevent_default = false;
                 if !text.is_empty() && runner.input.raw.focused {
                     let egui_event = egui::Event::Paste(text);
                     should_stop_propagation =
